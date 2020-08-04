@@ -1,5 +1,41 @@
 package com.revature.dao;
 
-public class FlashcardRepository {
+import java.util.Set;
+
+public class FlashcardRepository implements CrudRepository {
+
+	@Override
+	public <T> T save(T t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <T> Set<T> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <T> T findById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <T> boolean update(T t) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean deleteById(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	
+	
+	
     
 }

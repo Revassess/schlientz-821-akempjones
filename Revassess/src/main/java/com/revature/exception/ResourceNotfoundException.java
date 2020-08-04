@@ -1,5 +1,5 @@
 package com.revature.exception;
 
-public class ResourceNotfoundException {
+public class ResourceNotfoundException extends Exception {
 
 }

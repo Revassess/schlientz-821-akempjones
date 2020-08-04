@@ -3,9 +3,14 @@ package com.revature.config;
 import static org.hamcrest.CoreMatchers.nullValue;
 
 import java.io.FileInputStream;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLType;
+import java.sql.Types;
 import java.util.Properties;
+
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 
 /**
  * 
@@ -57,7 +62,22 @@ public class ConnectionUtil {
 
 	//implement this method with a callable statement that calls the absolute value sql function
 	public long callAbsoluteValueFunction(long value){
-		return value;
+		
+		try {
+			String sql = "ABS(?)";
+			
+			CallableStatement cs = conn.prepareCall(sql);
+			
+			cs.registerOutParameter(1, Types.BIGINT);
+			
+			cs.execute();
+			
+			return cs.getInt(1);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return Math.abs(value);
 	}
 	
 
