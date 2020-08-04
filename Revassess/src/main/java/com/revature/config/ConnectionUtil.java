@@ -1,6 +1,11 @@
 package com.revature.config;
 
+import static org.hamcrest.CoreMatchers.nullValue;
+
+import java.io.FileInputStream;
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.Properties;
 
 /**
  * 
@@ -15,19 +20,37 @@ public class ConnectionUtil {
 	//for singleton instance
 	private static ConnectionUtil cu;
 	
+	private static Connection conn = null;
+	
 	// add your jdbc url
-	public static final String URL = "";
+	public static final String URL = "jdbc:oracle:thin:@revassess.cks98gmxels6.us-west-1.rds.amazonaws.com:1521:ORCL";
 	// add your jdbc username
-	public static final String USERNAME = "";
+	public static final String USERNAME = "tester";
 	// add your jdbc password
-	public static final String PASSWORD = "";
+	public static final String PASSWORD = "password";
 	// name of the created stored procedure in tier 3
-	public static final String TIER_3_PROCEDURE_NAME = "";
+	public static final String TIER_3_PROCEDURE_NAME = "add_user";
 	// name of the created sequence in tier 3
-	public static final String TIER_3_SEQUENCE_NAME = "";
+	public static final String TIER_3_SEQUENCE_NAME = "tier3_sequence";
 
 	// implement this method to connect to the db and return the connection object
 	public Connection connect(){
+		
+		try {
+			if (conn == null) {
+				
+				Class.forName("oracle.jdbc.driver.OracleDriver");
+				
+				conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+				
+				return conn;
+			}
+			else {
+				return conn;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		return null;
 	}
 
