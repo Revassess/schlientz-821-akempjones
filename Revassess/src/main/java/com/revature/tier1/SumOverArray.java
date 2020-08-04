@@ -4,7 +4,7 @@ public class SumOverArray {
 
 	public static int IterateAndSum(int[] arr) {
 		int sum = 0;
-		for (int i = 0; i < arr.length - 1; i++) {
+		for (int i = 0; i < arr.length; i++) {
 			sum += arr[i];
 		}
 		
